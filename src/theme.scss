@@ -1,0 +1,138 @@
+// src/theme.scss
+
+@import "~@angular/material/theming";
+@include mat-core();
+
+$custom-primary:mat-palette($mat-green);
+$custom-accent:mat-palette($mat-blue);
+$custom-warn:mat-palette($mat-red);
+
+$custom-theme:mat-light-theme($custom-primary, $custom-accent, $custom-warn);
+
+@include angular-material-theme($custom-theme);
+
+
+//==============================================================================
+$theme1-material-components-primary: mat-palette($mat-light-green, 500);
+$theme1-material-components-accent: mat-palette($mat-pink, 200);
+$theme1-material-components-warn: mat-palette($mat-red);
+
+$theme1-material-components-theme: mat-light-theme(
+  $theme1-material-components-primary,
+  $theme1-material-components-accent,
+  $theme1-material-components-warn
+);
+
+.theme1{
+
+    @include angular-material-theme($theme1-material-components-theme);
+
+}
+
+//theme2 ==============================================================================
+
+$theme2-material-components-primary: mat-palette($mat-grey, 400);
+$theme2-material-components-accent: mat-palette($mat-yellow, A200, A100, A400);
+$theme2-material-components-warn: mat-palette($mat-red);
+
+$theme2-material-components-theme: mat-dark-theme(
+  $theme2-material-components-primary,
+  $theme2-material-components-accent,
+  $theme2-material-components-warn
+);
+// Set custom background color
+$custom-background-color: map_get($mat-purple, 100);
+$background: map-get($theme2-material-components-theme, background);
+$background: map_merge($background, (background: $custom-background-color));
+$theme2-material-components-theme: map_merge($theme2-material-components-theme, (background: $background));
+
+.theme2{
+    //$background-color: mat-color($mat-light-green);
+    @include angular-material-theme($theme2-material-components-theme);
+
+}
+//==============================================================================
+
+$theme3-material-components-primary: mat-palette($mat-indigo);
+$theme3-material-components-accent: mat-palette($mat-light-blue, A200, A100, A400);
+$theme3-material-components-warn: mat-palette($mat-red);
+
+// custom background and foreground palettes
+$my-dark-theme-background: (
+  status-bar: red,
+  app-bar:    map_get($mat-blue, 900),
+  background: orange,
+  hover:      rgba(white, 0.04), 
+  card:       map_get($mat-red, 800),
+  dialog:     map_get($mat-grey, 800),
+  disabled-button: $white-12-opacity,
+  raised-button: map-get($mat-grey, 800),
+  focused-button: $white-6-opacity,
+  selected-button: map_get($mat-grey, 900),
+  selected-disabled-button: map_get($mat-grey, 800),
+  disabled-button-toggle: black,
+  unselected-chip: map_get($mat-grey, 700),
+  disabled-list-option: black,
+);
+
+$my-dark-theme-foreground: (
+  base:              blue,
+  divider:           $white-12-opacity,
+  dividers:          $white-12-opacity,
+  disabled:          rgba(white, 0.3),
+  disabled-button:   rgba(white, 0.3),
+  disabled-text:     rgba(white, 0.3),
+  hint-text:         rgba(white, 0.3),
+  secondary-text:    rgba(white, 0.7),
+  icon:              white,
+  icons:             white,
+  text:              yellow,
+  slider-min:        white,
+  slider-off:        rgba(white, 0.3),
+  slider-off-active: rgba(white, 0.3),
+);
+
+@function custom-theme-using-function-1($primary, $accent, $warn: mat-palette($mat-red)) {
+    @return (
+        primary: $primary,
+        accent: $accent,
+        warn: $warn,
+        is-dark: false,
+        foreground: $my-dark-theme-foreground,
+        background: $my-dark-theme-background
+    );
+  }
+
+$theme3-material-components-theme: custom-theme-using-function-1(
+  $theme3-material-components-primary,
+  $theme3-material-components-accent,
+  $theme3-material-components-warn
+);
+
+.bcntheme{
+
+    
+}
+
+.theme3{
+
+    @include angular-material-theme($theme3-material-components-theme);
+
+}
+//==============================================================================
+$theme4-material-components-primary: mat-palette($mat-brown);
+$theme4-material-components-accent: mat-palette($mat-light-green, A200, A100, A400);
+$theme4-material-components-warn: mat-palette($mat-red);
+
+$theme4-material-components-theme: mat-light-theme(
+  $theme4-material-components-primary,
+  $theme4-material-components-accent,
+  $theme4-material-components-warn
+);
+
+
+.theme4{
+
+    @include angular-material-theme($theme4-material-components-theme);
+
+}

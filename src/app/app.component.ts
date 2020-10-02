@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'customTheme';
+  themes: string[] = ['theme1', 'theme2', 'theme3', 'theme4','default'];
+  theme: String= "default";
+  themeSelect:String = "theme2";
+
+
+
+
 }
